@@ -5,6 +5,7 @@ module.exports.todosClientStream = (call, callback) => {
     console.log("----createTodoClientStream----");
     console.log("call:: ", call);
 
+	// handle the data stream
     call.on("data", async (payload) => {
         console.log('Receiving data from stream ::',payload);
         const todoItem = {
@@ -14,6 +15,7 @@ module.exports.todosClientStream = (call, callback) => {
 		todos.push(todoItem);
     });
 
+	// if server encouters event request to end the stream
 	call.on("end", async (payload) => {
 		console.log("End of stream--payload :: ", payload);
 		console.log('Send Response to client :: ', todos);
