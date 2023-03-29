@@ -17,8 +17,8 @@ module.exports.todosBiDirectionalStream = (call) => {
     });
 
 	// if server encouters event request to end the stream
-	call.on("end", async (payload) => {
-		console.log("End of stream - payload :: ", payload);
+	call.on("end", async () => {
+		console.log("End of stream by Client Stub");
 		console.log('Send Response to client :: ', todos);
         call.end();
     });
